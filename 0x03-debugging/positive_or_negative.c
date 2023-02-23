@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-#include "main.h"
 /**
  * main - Entry point
  * Variables if_else_while
@@ -26,5 +25,6 @@ int main(void)
 	{
 		printf("%d is negative\n", n);
 	}
+	printf("\n");
 	return (0);
 }
