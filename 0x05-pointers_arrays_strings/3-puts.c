@@ -3,7 +3,7 @@
 /**
  * _puts - A function that prints a string wiht a new line
  * @str: the string
- * Return: 0.
+ * Return: The string
  */
 void _puts(char *str)
 {
@@ -14,6 +14,6 @@ void _puts(char *str)
 		_puts(str[a]);
 		a++;
 	}
-	_puts('\n');
+	return (str);
 }
 
