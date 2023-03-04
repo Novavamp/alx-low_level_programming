@@ -1,54 +1,48 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
-
 /**
- * main - Generates random valid passwords for the
- *        program 101-crackme.
+ * checksum - executes checksum
+ * @s: input char
+ * Return: checksum
+ */
+unsigned long checksum(char *s)
+{
+unsigned long sum = 0;
+while (*s != 0)
+{
+	sum += *s;
+	s++;
+}
+return (sum);
+}
+/**
+ * main - prints password for crakme
  *
  * Return: Always 0.
  */
 int main(void)
 {
-	char password[84];
-	int index = 0, sum = 0, diff_half1, diff_half2;
+	char alpha[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQSTUVWXYZ";
+	char s[33];
+	unsigned long sum;
+	int i, flag = 0;
 
-	srand(time(0));
-
-	while (sum < 2772)
+	srand(time(NULL));
+	while (flag == 0)
 	{
-OOA		password[index] = 33 + rand() % 94;
-		sum += password[index++];
-	}
-
-	password[index] = '\0';
-
-	if (sum != 2772)
-	{
-		diff_half1 = (sum - 2772) / 2;
-		diff_half2 = (sum - 2772) / 2;
-		if ((sum - 2772) % 2 != 0)
-			diff_half1++;
-
-		for (index = 0; password[index]; index++)
+		for (i = 0; i < 33; i++)
 		{
-			if (password[index] >= (33 + diff_half1))
-			{
-				password[index] -= diff_half1;
-				break;
-			}
+			s[i] = alpha[rand() % (sizeof(alpha) - 1)];
 		}
-		for (index = 0; password[index]; index++)
+		s[i] = '\0';
+		sum = checksum(s);
+		if (sum == 2772)
 		{
-			if (password[index] >= (33 + diff_half2))
-			{
-				password[index] -= diff_half2;
-				break;
-			}
+			flag = 1;
+			printf("%s", s);
 		}
 	}
-
-	printf("%s", password);
-
-	return (0);
+return (0);
 }
