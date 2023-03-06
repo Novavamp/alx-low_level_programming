@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 
 /**
  * _memset - function fills the first n bytes of the memory area
@@ -11,11 +10,11 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int num;
-	unsigned char *memory = s, value = b;
+	unsigned int index;
+	unsigned char *memory = s, value = 'b';
 
-	for (num = 0; num < n; num++)
-		memory[num] = value;
+	for (index = 0; index < n; index++)
+		memory[index] = value;
 
 	return (memory);
 }
