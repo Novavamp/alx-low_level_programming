@@ -1,46 +1,64 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-#include <ctype.h>
+#include <stdio.h>
 
-int main(int argc, char *argv[]) {
-    char *num1_str, *num2_str;
-    int num1, num2, result;
-    int i;
+/**
+ * _isdigit - checks if a character is a digit
+ *
+ * @c: character to be checked
+ *
+ * Return: 1 if @c is a digit, 0 otherwise
+ */
 
-    if (argc != 3) {
-        printf("Error\n");
-        return 98;
-    }
+int _isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
 
-    num1_str = argv[1];
-    num2_str = argv[2];
+/**
+ * mul - multiplies two numbers
+ *
+ * @num1: first number to be multiplied
+ * @num2: second number to be multiplied
+ *
+ * Return: product of @num1 and @num2
+ */
 
-    for (i = 0; num1_str[i] != '\0'; i++) {
-        if (!isdigit(num1_str[i])) {
-            printf("Error\n");
-            return 98;
-        }
-    }
+int mul(int num1, int num2)
+{
+	return (num1 * num2);
+}
 
-    for (i = 0; num2_str[i] != '\0'; i++) {
-        if (!isdigit(num2_str[i])) {
-            printf("Error\n");
-            return 98;
-        }
-    }
+/**
+ * main - multiplies two numbers
+ *
+ * @argc: number of command-line arguments
+ * @argv: array of command-line arguments
+ *
+ * Return: 0 if successful, 1 otherwise
+ */
 
-    num1 = atoi(num1_str);
-    num2 = atoi(num2_str);
+int main(int argc, char *argv[])
+{
+	int num1, num2;
 
-    if (num1 <= 0 || num2 <= 0) {
-        printf("Error\n");
-        return 98;
-    }
+	if (argc != 3)
+	{
+		printf("Error\n");
+		return (1);
+	}
 
-    result = num1 * num2;
+	if (!_isdigit(*argv[1]) || !_isdigit(*argv[2]))
+	{
+		printf("Error\n");
+		return (1);
+	}
 
-    printf("%d\n", result);
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[2]);
 
-    return 0;
+	printf("%d\n", mul(num1, num2));
+
+	return (0);
 }
 
