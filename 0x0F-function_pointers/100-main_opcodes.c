@@ -2,39 +2,49 @@
 #include <stdlib.h>
 
 /**
- * main - Entry point of the program
- * @argc: Number of arguments passed to the program
- * @argv: Array of arguments passed to the program
- *
- * Return: 0 if the program completes successfully, 1 if there is an error
+ * print_opcodes - function that prints opcodes of its own main function
+ * @number_bytes: number of bytes to print
+ */
+void print_opcodes(int number_bytes);
+
+/**
+ * main - entry point
+ * @argc: argument count
+ * @argv: argument value
+ * Return: always 0
  */
 int main(int argc, char **argv)
 {
-    int i, num_bytes;
-    unsigned char *opcodes;
+	int number_bytes;
 
-    if (argc != 2)
-    {
-        printf("Error\n");
-        return 1;
-    }
+	if (argc != 2)
+	{
+		printf("Error\n");
+		return 1;
+	}
 
-    num_bytes = atoi(argv[1]);
+	number_bytes = atoi(argv[1]);
 
-    if (num_bytes < 0)
-    {
-        printf("Error\n");
-        return 2;
-    }
+	if (number_bytes < 0)
+	{
+		printf("Error\n");
+		return 2;
+	}
 
-    opcodes = (unsigned char *)main;
+	print_opcodes(number_bytes);
 
-    for (i = 0; i < num_bytes; i++)
-    {
-        printf("%02x", *(opcodes + i));
-    }
+	return 0;
+}
 
-    printf("\n");
+void print_opcodes(int number_bytes)
+{
+	unsigned char *main_ptr = (unsigned char *)main;
+	int i;
 
-    return 0;
+	for (i = 0; i < number_bytes; i++)
+	{
+		printf("%02x ", main_ptr[i]);
+	}
+
+	printf("\n");
 }
