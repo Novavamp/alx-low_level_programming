@@ -5,7 +5,20 @@
  * print_opcodes - function that prints opcodes of its own main function
  * @number_bytes: number of bytes to print
  */
-void print_opcodes(int number_bytes);
+void print_opcodes(int number_bytes)
+{
+    unsigned char *main_ptr = (unsigned char *)main;
+    int i;
+
+    for (i = 0; i < number_bytes; i++)
+    {
+        printf("%02x", main_ptr[i]);
+        if (i != number_bytes - 1)
+            printf(" ");
+    }
+
+    printf("\n");
+}
 
 /**
  * main - entry point
@@ -34,19 +47,4 @@ int main(int argc, char **argv)
     print_opcodes(number_bytes);
 
     return 0;
-}
-
-void print_opcodes(int number_bytes)
-{
-    unsigned char *main_ptr = (unsigned char *)main;
-    int i;
-
-    for (i = 0; i < number_bytes; i++)
-    {
-        printf("%02x", main_ptr[i]);
-        if (i != number_bytes - 1)
-            printf(" ");
-    }
-
-    printf("\n");
 }
