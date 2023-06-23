@@ -1,9 +1,9 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * main - Entry point
- * @argc: Argument count
- * @argv: Argument vector
+ * main - entry point
+ * @argc: argument count
+ * @argv: argument command line
  *
  * Return: always 0
  */
