@@ -1,21 +1,14 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
- * main - Entry point of the program
+ * main - main entry
+ * @argc: first parameter
+ * @argv: second parameter
  *
- * Return: Always 0
+ * Return: always 0
  */
-int main(void)
+int main(int __attribute__((unused)) argc, char *argv[])
 {
-	char *name = __FILE__;
-	int i = 0;
-
-	while (name[i])
-	{
-		_putchar(name[i]);
-		i++;
-	}
-	_putchar('\n');
-
+	printf("%s\n", argv[0]);
 	return (0);
 }
