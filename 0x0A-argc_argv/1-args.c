@@ -1,12 +1,11 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
- * main - Entry point of the program
+ * main - Entry point
  * @argc: Argument count
- * @argv: Argument vector (array of strings)
+ * @argv: Argument vector
  *
- * Return: Always 0
+ * Return: always 0
  */
 int main(int argc, char __attribute__((unused)) *argv[])
 {
@@ -14,8 +13,7 @@ int main(int argc, char __attribute__((unused)) *argv[])
 
 	for (i = 0; i < argc; i++)
 	{
-		printf("%s\n", argv[i]);
+		printf("%d\n", i);
 	}
-
 	return (0);
 }
