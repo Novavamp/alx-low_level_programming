@@ -1,11 +1,11 @@
 #include "variadic_functions.h"
+
 /**
  * print_all - function that prints anything
  * @format: list of arguments passed to the function
  */
-
-void print_all(const char * format, ...)
-
+void print_all(const char * const format, ...)
+{
 	va_list lists;
 	char *s;
 	char ch;
@@ -44,7 +44,4 @@ void print_all(const char * format, ...)
 	}
 	printf("\n");
 	va_end(lists);
-
-	if (i == 0)
-		printf("No arguments passed to print_all()\n");
 }
