@@ -2,6 +2,12 @@
 #include <stdlib.h>
 
 /**
+ * print_opcodes - function that prints opcodes of its own main function
+ * @number_bytes: number of bytes to print
+ */
+void print_opcodes(int number_bytes);
+
+/**
  * main - entry point
  * @argc: argument count
  * @argv: argument value
@@ -30,13 +36,9 @@ int main(int argc, char **argv)
     return 0;
 }
 
-/**
- * print_opcodes - function that prints opcodes of its own main function
- * @number_bytes: number of bytes to print
- */
 void print_opcodes(int number_bytes)
 {
-    unsigned char *main_ptr = (unsigned char *)main;
+    unsigned char *main_ptr = (unsigned char *)print_opcodes;
     int i;
 
     for (i = 0; i < number_bytes; i++)
