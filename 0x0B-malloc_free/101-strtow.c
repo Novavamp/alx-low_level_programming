@@ -1,8 +1,6 @@
+#include "main.h"
 #include <stdlib.h>
 #include <string.h>
-
-int count_words(char *str);
-char **strtow(char *str);
 
 /**
  * count_words - Counts the number of words in a string
@@ -72,4 +70,3 @@ char **strtow(char *str)
 	words[k] = NULL;
 	return words;
 }
-
