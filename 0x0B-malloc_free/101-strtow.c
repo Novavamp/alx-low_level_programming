@@ -1,69 +1,75 @@
-#include "main.h"
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
-/* Returns the number of words in the given string */
-int count_words(char *str) {
-    int count = 0;
-    int in_word = 0; /* indicates if we're currently in a word */
+int count_words(char *str);
+char **strtow(char *str);
 
-    while (*str != '\0') {
-        if (!isspace(*str)) { /* current character is not whitespace */
-            if (!in_word) { /* start of a new word */
-                count++;
-                in_word = 1;
-            }
-        } else { /* current character is whitespace */
-            in_word = 0;
-        }
-        str++;
-    }
+/**
+ * count_words - Counts the number of words in a string
+ * @str: Input string
+ *
+ * Return: Number of words
+ */
+int count_words(char *str)
+{
+	int count = 0;
+	int i, len = strlen(str);
 
-    return count;
+	for (i = 0; i < len; i++)
+	{
+		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
+			count++;
+	}
+
+	return count;
 }
 
-/* Splits the given string into words and returns an array of pointers to the words */
-char **strtow(char *str) {
-    int i, j;
-    char **words;
-    int num_words = count_words(str);
+/**
+ * strtow - Splits a string into words
+ * @str: Input string
+ *
+ * Return: Pointer to an array of strings (words)
+ */
+char **strtow(char *str)
+{
+	if (str == NULL || *str == '\0')
+		return NULL;
 
-    /* Allocate memory for the array of word pointers */
-    words = (char **) malloc((num_words + 1) * sizeof(char *));
-    if (words == NULL) {
-        return NULL; /* Memory allocation error */
-    }
+	int num_words = count_words(str);
+	if (num_words == 0)
+		return NULL;
 
-    /* Extract words from the string and store them in the array */
-    for (i = 0; i < num_words; i++) {
-        /* Find the start of the next word */
-        while (isspace(*str)) {
-            str++;
-        }
+	char **words = malloc((num_words + 1) * sizeof(char *));
+	if (words == NULL)
+		return NULL;
 
-        /* Find the end of the current word */
-        for (j = 0; str[j] != '\0' && !isspace(str[j]); j++) {
-        }
+	int i, j, k = 0, len = strlen(str), word_len;
 
-        /* Allocate memory for the word and copy it into the array */
-        words[i] = (char *) malloc((j + 1) * sizeof(char));
-        if (words[i] == NULL) {
-            /* Memory allocation error, free previously allocated memory and return NULL */
-            for (j = 0; j < i; j++) {
-                free(words[j]);
-            }
-            free(words);
-            return NULL;
-        }
-        strncpy(words[i], str, j);
-        words[i][j] = '\0';
+	for (i = 0; i < len; i++)
+	{
+		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
+		{
+			word_len = 0;
+			for (j = i; j < len && str[j] != ' '; j++)
+				word_len++;
 
-        /* Move to the start of the next word */
-        str += j;
-    }
-    words[num_words] = NULL; /* Mark the end of the array with a NULL pointer */
+			words[k] = malloc((word_len + 1) * sizeof(char));
+			if (words[k] == NULL)
+			{
+				for (i = 0; i < k; i++)
+					free(words[i]);
+				free(words);
+				return NULL;
+			}
 
-    return words;
+			for (j = i; j < i + word_len; j++)
+				words[k][j - i] = str[j];
+			words[k][word_len] = '\0';
+			k++;
+		}
+	}
+
+	words[k] = NULL;
+	return words;
 }
 
