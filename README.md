@@ -1,4 +1,4 @@
-# Getting Started with Low-Level Programming in C
+# Getting Started with Low-Level Programming in C.
 
 🚀 Welcome to the world of low-level programming in C! This guide will provide you with the necessary steps to get started on your exciting journey. My name is Precious Okechukwu Nwosu, and I'll be your guide throughout this process. Let's dive in! 🎉
 
