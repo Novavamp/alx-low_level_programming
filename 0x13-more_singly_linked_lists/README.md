@@ -2,7 +2,7 @@
 
 The contents of this repository consist of C programs that exemplify the utilization of singly linked lists. These programs build upon the concepts presented in the preceding repository, [0x12-singly_linked_lists](https://github.com/USERNAME_HERE/holbertonschool-low_level_programming/tree/main/0x12-singly_linked_lists).
 
-## Data Structure
+## Data Structure:
 
 Within this directory, the following structure is employed to represent a node in the linked list:
 
