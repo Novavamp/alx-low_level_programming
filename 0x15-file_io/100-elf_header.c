@@ -8,7 +8,7 @@
 #include <sys/stat.h>
 #include <elf.h>
 
-#define ERROR_CODE 98
+#define ERROR_CODE (98)
 
 /**
  * error_exit - Print error message and exit with error code 98
@@ -29,7 +29,8 @@ void print_elf_header(Elf64_Ehdr *elf_header)
 	const unsigned char *magic = elf_header->e_ident;
 
 	printf("ELF Header:\n");
-	printf("  Magic:   %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n",
+	printf("  Magic:   %02x %02x %02x %02x %02x %02x %02x %02x %02x
+			%02x %02x %02x %02x %02x %02x %02x\n",
 		magic[0], magic[1], magic[2], magic[3],
 		magic[4], magic[5], magic[6], magic[7],
 		magic[8], magic[9], magic[10], magic[11],
@@ -88,7 +89,7 @@ void print_elf_header(Elf64_Ehdr *elf_header)
 		break;
 	}
 
-	printf("  ABI Version:                       %d\n", elf_header->e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:			%d\n", elf_header->e_ident[EI_ABIVERSION]);
 
 	printf("  Type:                              ");
 	switch (elf_header->e_type)
@@ -113,7 +114,7 @@ void print_elf_header(Elf64_Ehdr *elf_header)
 		break;
 	}
 
-	printf("  Entry point address:               0x%lx\n", elf_header->e_entry);
+	printf("  Entry point address:			0x%lx\n", elf_header->e_entry);
 }
 
 /**
@@ -145,5 +146,5 @@ int main(int argc, char *argv[])
 	print_elf_header(&elf_header);
 
 	close(fd);
-	return 0;
+	return (0);
 }
