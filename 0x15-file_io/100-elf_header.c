@@ -27,7 +27,6 @@ void error_exit(const char *msg)
 void print_elf_header(Elf64_Ehdr *elf_header)
 {
 	const unsigned char *magic = elf_header->e_ident;
-
 	printf("ELF Header:\n");
 	printf("  Magic:   %02x %02x %02x %02x %02x %02x %02x %02x %02x
 			%02x %02x %02x %02x %02x %02x %02x\n",
@@ -36,82 +35,35 @@ void print_elf_header(Elf64_Ehdr *elf_header)
 		magic[8], magic[9], magic[10], magic[11],
 		magic[12], magic[13], magic[14], magic[15]);
 
-	printf("  Class:                             ");
-	switch (elf_header->e_ident[EI_CLASS])
-	{
-	case ELFCLASS32:
-		printf("ELF32\n");
-		break;
-	case ELFCLASS64:
-		printf("ELF64\n");
-		break;
-	default:
-		printf("<unknown: %x>\n", elf_header->e_ident[EI_CLASS]);
-		break;
-	}
-
-	printf("  Data:                              ");
-	switch (elf_header->e_ident[EI_DATA])
-	{
-	case ELFDATA2LSB:
-		printf("2's complement, little endian\n");
-		break;
-	case ELFDATA2MSB:
-		printf("2's complement, big endian\n");
-		break;
-	default:
-		printf("<unknown: %x>\n", elf_header->e_ident[EI_DATA]);
-		break;
-	}
-
+	print_string_value("Class", elf_header->e_ident[EI_CLASS] == ELFCLASS32 ? "ELF32" : "ELF64");
+	print_string_value("Data", elf_header->e_ident[EI_DATA] == ELFDATA2LSB ? "2's complement, little endian"
+										: "2's complement, big endian");
 	printf("  Version:                           %d (current)\n", elf_header->e_ident[EI_VERSION]);
-
-	printf("  OS/ABI:                            ");
 	switch (elf_header->e_ident[EI_OSABI])
 	{
-	case ELFOSABI_SYSV:
-		printf("UNIX - System V\n");
-		break;
-	case ELFOSABI_HPUX:
-		printf("UNIX - HP-UX\n");
-		break;
-	case ELFOSABI_NETBSD:
-		printf("UNIX - NetBSD\n");
-		break;
-	case ELFOSABI_LINUX:
-		printf("UNIX - Linux\n");
-		break;
-	case ELFOSABI_SOLARIS:
-		printf("UNIX - Solaris\n");
-		break;
-	default:
-		printf("<unknown: %x>\n", elf_header->e_ident[EI_OSABI]);
-		break;
+	case ELFOSABI_SYSV:   print_string_value("OS/ABI", "UNIX - System V"); break;
+	case ELFOSABI_HPUX:   print_string_value("OS/ABI", "UNIX - HP-UX"); break;
+	case ELFOSABI_NETBSD: print_string_value("OS/ABI", "UNIX - NetBSD"); break;
+	case ELFOSABI_LINUX:  print_string_value("OS/ABI", "UNIX - Linux"); break;
+	case ELFOSABI_SOLARIS:print_string_value("OS/ABI", "UNIX - Solaris"); break;
+	default:              printf("  OS/ABI:                            <unknown: %x>\n", elf_header->e_ident[EI_OSABI]);
 	}
+<<<<<<< HEAD
 
 	printf("  ABI Version:			%d\n", elf_header->e_ident[EI_ABIVERSION]);
 
 	printf("  Type:                              ");
+=======
+	printf("  ABI Version:                       %d\n", elf_header->e_ident[EI_ABIVERSION]);
+>>>>>>> c153222f6e8e6e25d799e5050b9a878b38ec28a1
 	switch (elf_header->e_type)
 	{
-	case ET_NONE:
-		printf("NONE (Unknown type)\n");
-		break;
-	case ET_REL:
-		printf("REL (Relocatable file)\n");
-		break;
-	case ET_EXEC:
-		printf("EXEC (Executable file)\n");
-		break;
-	case ET_DYN:
-		printf("DYN (Shared object file)\n");
-		break;
-	case ET_CORE:
-		printf("CORE (Core file)\n");
-		break;
-	default:
-		printf("<unknown: %x>\n", elf_header->e_type);
-		break;
+	case ET_NONE: print_string_value("Type", "NONE (Unknown type)"); break;
+	case ET_REL:  print_string_value("Type", "REL (Relocatable file)"); break;
+	case ET_EXEC: print_string_value("Type", "EXEC (Executable file)"); break;
+	case ET_DYN:  print_string_value("Type", "DYN (Shared object file)"); break;
+	case ET_CORE: print_string_value("Type", "CORE (Core file)"); break;
+	default:      printf("  Type:                              <unknown: %x>\n", elf_header->e_type);
 	}
 
 	printf("  Entry point address:			0x%lx\n", elf_header->e_entry);
