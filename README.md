@@ -1,64 +1,54 @@
-# Getting Started with Low-Level Programming in C.
+<div align="center">
 
-🚀 Welcome to the world of low-level programming in C! This guide will provide you with the necessary steps to get started on your exciting journey. My name is Precious Okechukwu Nwosu, and I'll be your guide throughout this process. Let's dive in! 🎉
+# ALX Low-Level Programming
 
-## Prerequisites
+**C programming exercises covering fundamentals, memory, pointers, functions, and data structures.**
 
-Before diving into low-level programming, let's make sure you have the following prerequisites:
+![C](https://img.shields.io/badge/C-programming-A8B9CC?logo=c&logoColor=111)
+![GCC](https://img.shields.io/badge/Compiler-GCC-1A5A96?logo=gnu&logoColor=white)
 
-- A text editor: Choose your preferred text editor such as Vim, Emacs, Sublime Text, Visual Studio Code, or any other editor of your choice. ✍️
-- A C compiler: Select a C compiler to write and run your C code. Popular choices include GCC, Clang, Turbo C, Borland C, etc. 🖥️
+</div>
 
-## Setting up your development environment
+## About
 
-To set up your development environment, follow these simple steps:
+This repository collects practical C programming exercises completed during the ALX Software Engineering programme. The projects progress from basic compilation and output to functions, pointers, arrays, strings, recursion, and other core low-level concepts.
 
-1. Choose a text editor and install it on your computer.
-2. Select a C compiler and install it on your computer. Make sure to add the compiler to your system PATH.
-3. Create a new folder on your computer to store your C code files. 📁
+## Topics
 
-## Writing your first C program
+The repository is organised into numbered directories. Early topics include:
 
-Let's write your first C program! Follow these steps:
+- Hello World and compilation.
+- Variables, conditional statements, and loops.
+- Functions and nested loops.
+- Debugging.
+- Pointers, arrays, and strings.
+- Recursion.
 
-1. Open your text editor and create a new file in your C code folder. Save the file with a `.c` extension (e.g., `hello.c`).
-2. Copy and paste the following code into your file:
+Browse the numbered directories for the exact tasks and source files.
 
-```c
-#include <stdio.h>
+## Build and run a C file
 
-int main() {
-   printf("Hello, World! 🌍");
-   return 0;
-}
+You need a C compiler such as GCC.
+
+```bash
+gcc -Wall -Werror -Wextra -pedantic file.c -o program
+./program
 ```
 
-3. Save the file and close the editor.
-4. Open a command prompt or terminal window and navigate to your C code folder.
-5. Compile the program using your chosen compiler. For example, if you are using GCC, run the command `gcc -o hello hello.c` to compile the program and generate an executable file called `hello`.
-6. Run the program by typing `./hello` (on Linux or macOS) or `hello` (on Windows). You should see the message "Hello, World! 🌍" printed to the console.
+Replace `file.c` with the source file you want to compile. Some exercises require compiling multiple source files together; check the task files for the expected command.
 
-## Learning low-level concepts
+## Skills practised
 
-Low-level programming in C involves working with the hardware and memory of a computer. To deepen your understanding, focus on the following key concepts:
+- C syntax, types, and control flow.
+- Functions and modular code.
+- Pointers and memory addresses.
+- Arrays, strings, and memory handling.
+- Compilation, debugging, and command-line tooling.
 
-- Pointers and memory management 📝
-- Bitwise operations and binary arithmetic ⚙️
-- Assembly language and machine code 💻
-- Operating system concepts such as system calls and interrupts 🛠️
+## Note
 
-## Resources for learning
+This is a learning repository. Individual exercises may have their own requirements and build instructions.
 
-To further expand your knowledge of low-level programming in C, explore various resources, including books, online courses, and tutorials. Here are some recommended resources to kickstart your learning journey:
+---
 
-- "The C Programming Language" by Brian Kernighan and Dennis Ritchie 📚
-- "Programming from the Ground Up" by Jonathan Bartlett 📖
-- "Introduction to Computer Science using C" by Bradley Kjell 🎓
-- "Low-level programming" online course on Udemy 🖥️
-- "Learning C Programming" tutorial series on YouTube by thenewboston 🎥
-
-## Conclusion
-
-🎊 Congratulations on taking the first steps into the exciting world of low-level programming in C! With dedication and practice, you will become proficient in working with the hardware and memory of a computer. Enjoy the journey and happy coding! If you need any assistance along the way, feel free to reach out. 🙌
-
-Author: Precious Okechukwu Nwosu ✨
+*Learning archive by [Precious Okechukwu Nwosu](https://github.com/Novavamp).*
